@@ -240,6 +240,15 @@ blockquote > * + * {
   }
 }
 
+@media (min-width: 1440px) {
+  :root {
+    --main-width: 60em;
+  }
+  body {
+    columns: 2;
+  }
+}
+
 @media print {
   :root {
     --main-width: 100%;
