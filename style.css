@@ -15,6 +15,7 @@
   --scale3: calc(var(--scale2) * var(--scale-ratio));
   --scale4: calc(var(--scale3) * var(--scale-ratio));
   --scale5: calc(var(--scale4) * var(--scale-ratio));
+  --main-width: min(70em, 90vw);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -39,27 +40,14 @@ html {
 body {
   background: var(--color-background);
   color: var(--color-primary);
-  display: grid;
   font: 1em/1.5 Lato, sans-serif;
-  gap: 2em;
-  grid-template-columns:
-    [full-start]
-    1fr
-    [main-start side-start]
-    minmax(min-content, 12em)
-    [side-end content-start]
-    minmax(min-content, 36em)
-    [main-end content-end]
-    1fr
-    [full-end];
-  grid-template-rows: auto [content] 0;
   margin-bottom: 4em;
 }
 
-body::before {
-  content: '';
-  grid-column: full;
-  grid-row: content;
+section {
+  width: var(--main-width);
+  margin: auto;
+  margin-top: var(--scale2);
 }
 
 ol,
@@ -112,8 +100,11 @@ h2 {
 h3 {
   color: var(--color-accent);
   font-size: var(--scale3);
-  grid-column: side;
   margin-bottom: 1rem;
+  display: inline-block;
+  vertical-align: top;
+  position: sticky;
+  top: var(--scale0);
 }
 
 h4 {
@@ -151,15 +142,9 @@ svg {
   background: var(--color-muted);
   display: inherit;
   gap: inherit;
-  grid-column: full;
-  grid-template-columns: inherit;
-  padding: 4em 0;
+  padding-top: var(--scale5);
+  padding-bottom: var(--scale5);
   text-align: center;
-}
-
-.masthead > *,
-section {
-  grid-column: main;
 }
 
 .masthead > img {
@@ -168,6 +153,7 @@ section {
   max-width: 12em;
 }
 
+.masthead > * + *,
 article > * + *,
 blockquote > * + * {
   margin-top: 0.6em;
@@ -177,9 +163,25 @@ blockquote > * + * {
   color: var(--color-secondary);
 }
 
-.stack {
-  display: grid;
-  gap: 1.5em;
+.stack,
+.grid-list {
+  display: inline-block;
+  width: 100%;
+}
+
+.grid-list {
+  display: inline-flex;
+  flex-wrap: wrap;
+}
+
+.grid-list > * {
+  padding-bottom: var(--scale0);
+  padding-right: var(--scale0);
+  width: 50%;
+}
+
+.stack > * + * {
+  margin-top: var(--scale2);
 }
 
 .icon-list {
@@ -191,15 +193,9 @@ blockquote > * + * {
   padding: 0;
 }
 
-.grid-list {
-  display: grid;
-  gap: 1em;
-}
-
 .tag-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4em;
   list-style: none;
   padding: 0;
 }
@@ -208,6 +204,7 @@ blockquote > * + * {
   background: var(--color-muted);
   border-radius: 0.2em;
   padding: 0.2em 0.6em;
+  margin: 0 var(--scale5) 0.4em 0;
 }
 
 .bullet-item:not(:first-child)::before {
@@ -219,35 +216,32 @@ blockquote > * + * {
   h3 {
     text-align: right;
     margin-bottom: inherit;
+    width: 25%;
+    padding-right: var(--scale0);
+  }
+
+  .stack,
+  .grid-list {
+    width: 70%;
   }
 
   .masthead {
+    padding-left: calc(50% - var(--main-width) / 2 + 0.25 * var(--main-width));
+    padding-right: calc(50% - var(--main-width) / 2);
     text-align: inherit;
   }
 
-  .masthead > *,
-  section {
-    grid-column: content;
-  }
-
   .masthead img {
-    grid-column: side;
-    grid-row: span 2;
     max-width: 100%;
-  }
-
-  section {
-    display: contents;
   }
 
   .icon-list {
     flex-direction: column;
   }
+}
 
-  .grid-list {
-    grid-template-columns: repeat(
-      auto-fit,
-      minmax(calc((100% - 1em) / 2), 1fr)
-    );
+@media print {
+  :root {
+    --main-width: 100%;
   }
 }
