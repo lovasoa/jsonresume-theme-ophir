@@ -116,30 +116,30 @@ exports[`renders a resume 1`] = `
     </section>
   
         
-    <section id=\\"education\\">
-      <h3>Education</h3>
-      <div class=\\"stack\\">
-        
-          <article>
-            <header>
-              <h4><a href=\\"https://www.ou.edu/\\">University of Oklahoma</a></h4>
-              <div class=\\"meta\\">
-                <strong>Information Technology</strong>
-                <div><time datetime=\\"2011-06-01\\">Jun 2011</time> – <time datetime=\\"2014-01-01\\">Jan 2014</time></div>
-              </div>
-            </header>
-            <p>Bachelor</p>
+      <section id=\\"education\\">
+        <h3>Education</h3>
+        <div class=\\"stack\\">
+          
+              <article>
+                <header>
+                  <h4><a href=\\"https://www.ou.edu/\\">University of Oklahoma</a></h4>
+                  <div class=\\"meta\\">
+                    <strong>Information Technology</strong>
+                    <div><time datetime=\\"2011-06-01\\">Jun 2011</time> – <time datetime=\\"2014-01-01\\">Jan 2014</time></div>
+                  </div>
+                </header>
+                <p>Bachelor</p>
+                
+                  <h5>Courses</h5>
+                  <ul class=\\"tag-list\\">
+                    <li><p>DB1101 - Basic SQL</p></li><li><p>CS2011 - Java Introduction</p></li>
+                  </ul>
+                
+              </article>
             
-              <h5>Courses</h5>
-              <ul>
-                <li><p>DB1101 - Basic SQL</p></li><li><p>CS2011 - Java Introduction</p></li>
-              </ul>
-            
-          </article>
-        
-      </div>
-    </section>
-  
+        </div>
+      </section>
+    
         
     <section id=\\"projects\\">
       <h3>Projects</h3>
